@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Page Title</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<head>
+<style>
+
+body {
+  margin: 40px;
+  background: #ddd;
+}
+
+.item {
+  color: #000;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+ 
+#gallery {
+     /* width: 600px; */
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 200px);
+    grid-auto-flow: row;
+    grid-template-rows: repeat(3, 200px);
+}
+
+article {
+  float: left;
+  width: 80%;
+}
+
+aside {
+  float: right;
+  background: #ddd;
+  width: 20%;
+}
+.bgcolor1 { background-color: #6F98A8; }
+.bgcolor2 { background-color: #2B8EAD; }
+.bgcolor3 { background-color: #2F454E; }
+.bgcolor4 { background-color: #BFBFBF; }
+
+button{
+  margin:auto;
+}
+
+/* BUTTON STYLES */
+button{
+  padding:16px 32px;
+  font-family:helvetica;
+  font-size:16px;
+  font-weight:100;
+  color:#fff;
+  background: #72C3DC;
+  border-color: #72c3dc;
+  font-weight:100;
+}
+button:hover{
+  border-bottom: 5px solid #2B8EAD;
+}
+/* END OF BUTTON STYLES */
+
+  @media screen and (min-width: 960px) {
+    #gallery {
+         /* width: 600px; */
+        display: grid;
+      }
+  }
+ @media screen and (max-width: 959px) {
+  .wrapper {
+    display: list-item;
+    list-style: none;
+    text-align: center;
+  }
+
+  article {
+    float: left;
+    width: 100%;
+    margin-top: 150px;
+  }
+
+ aside {
+    width: 72%;
+    position: fixed;
+    padding: 10px;
+    text-align: center;
+  }
+  .item{
+    margin-bottom: 10px;
+    background: #EEE;
+    padding: 10px;
+    border-radius: 0px;
+  }
+.bgcolor1 { border-left: 10px solid #6F98A8; }
+.bgcolor2 { border-left: 10px solid #2B8EAD; }
+.bgcolor3 { border-left: 10px solid #2F454E; }
+.bgcolor4 { border-left: 10px solid #BFBFBF; } 
+ button{ 
+      min-width: 90%;
+      display: inline-block;
+      margin-bottom: 10px;
+  }
+}
+</style>
+</head>
+<body> 
+<div> 
+  <article class="content">
+   <div id="gallery">
+      <div id="1" class="item bgcolor1">1</div>
+      <div id="2" class="item bgcolor2">2</div>
+      <div id="3" class="item bgcolor3">3</div>  
+      <div id="4" class="item bgcolor4">4</div>
+      <div id="5" class="item bgcolor1">5</div>
+      <div id="6" class="item bgcolor2">6</div>
+      <div id="7" class="item bgcolor3">7</div>
+      <div id="8" class="item bgcolor4">8</div>
+      <div id="9" class="item bgcolor1">9</div>
+    </div>
+  </article>
+  <aside class="sidebar">
+    <button class="btn"onclick="shuffle()">Shuffle</button>
+    <button class="btn"onclick="order()">Order</button>
+  </aside>
+</div>
+ <script>
+
+  function shuffle() {
+      var container = document.getElementById("gallery");
+      var elementsArray = Array.prototype.slice.call(container.getElementsByClassName('item'));
+      elementsArray.forEach(function(element){
+        container.removeChild(element);
+      })
+      shuffleArray(elementsArray);
+      elementsArray.forEach(function(element){
+      container.appendChild(element);
+    })
+  }
+
+  function order(){
+     var container = document.getElementById("gallery");
+      var elementsArray = Array.prototype.slice.call(container.getElementsByClassName('item'));
+      elementsArray.forEach(function(element){
+        container.removeChild(element);
+      })
+       orderArray(elementsArray);
+        elementsArray.forEach(function(element){
+      container.appendChild(element);
+    })
+  }
+
+  function shuffleArray(inputArr) {
+      for (var i = inputArr.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var temp = inputArr[i];
+          inputArr[i] = inputArr[j];
+          inputArr[j] = temp;
+      }
+      return inputArr;
+  }
+
+  function orderArray(inputArr) {
+      for (var i = 0; i < inputArr.length; i++) {
+          var target = inputArr[i];
+          for (var j = i - 1; j >= 0 && (inputArr[j].id > target.id); j--) {
+              inputArr[j+1] = inputArr[j];
+          }
+          inputArr[j+1] = target
+      }
+      return inputArr;
+    } 
+
+ </script>
+
+</body>
+</html>
