@@ -11,10 +11,14 @@
     }
 
     .item {
-      color: #000;
+      color: #fff;
       border-radius: 5px;
       padding: 20px;
-      font-size: 150%;
+      font-size: 5em;
+      display: inline-grid;
+      grid-gap: 3px;
+      justify-items: center;
+      align-items: center;
     }
 
     #gallery {
@@ -66,10 +70,24 @@
       background: #72C3DC;
       border-color: #72c3dc;
       font-weight: 100;
+      border-radius: 5px;
+    }
+
+    button.btn {
+      margin-bottom: 10px;
+      width: 100%;
     }
 
     button:hover {
       border-bottom: 5px solid #2B8EAD;
+    }
+    
+    footer{
+      display: inline-block;
+      text-align: center;
+      margin: 30px auto;
+      width: 100%;
+      font-style: italic;
     }
 
     /* END OF BUTTON STYLES */
@@ -79,19 +97,17 @@
         /* width: 600px; */
         display: grid;
       }
+      .wrapper{
+        width: 960px;
+        margin: 0 auto;
+      }
     }
 
     @media screen and (max-width: 959px) {
-      .wrapper {
-        display: list-item;
-        list-style: none;
-        text-align: center;
-      }
-
       article {
         float: left;
         width: 100%;
-        margin-top: 150px;
+        margin-top: 60px;
       }
 
       aside {
@@ -99,6 +115,8 @@
         position: fixed;
         padding: 10px;
         text-align: center;
+        top: 0;
+
       }
 
       .item {
@@ -106,6 +124,10 @@
         background: #EEE;
         padding: 10px;
         border-radius: 0px;
+        font-size: 2em;
+        display: block;
+        color: #000;
+        text-align: center;
       }
 
       .bgcolor1 {
@@ -125,16 +147,15 @@
       }
 
       button {
-        min-width: 90%;
         display: inline-block;
         margin-bottom: 10px;
-      }
+      }     
     }
   </style>
 </head>
 
 <body>
-  <div>
+  <div class="wrapper">
     <article class="content">
       <div id="gallery">
         <div id="1" class="item bgcolor1">1</div>
@@ -152,6 +173,7 @@
       <button class="btn" onclick="shuffle()">Shuffle</button>
       <button class="btn" onclick="order()">Order</button>
     </aside>
+    <footer>Shuffle and shot by Karthik Anburaj</footer>
   </div>
   <script>
 
